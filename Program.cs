@@ -1,7 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-
 using System;
 using System.IO;
+using System.Linq.Expressions;
 
 public class Program{
     //set up phase
@@ -123,25 +122,42 @@ public static bool ProcessGuess(char guess, HashSet<char> guessedLetters)
         }
 }
 
+public static char GetValidatedInput()
+{
+    char letter;
+
+    while (true)
+    {
+        Console.WriteLine("Enter a letter: ");
+        string input = Console.ReadLine();
+        if (string.IsNullOrEmpty(input) || input.Length != 1 || !char.IsLetter(input[0]))
+        {
+        Console.WriteLine("Invalid input. Please enter a single letter.");
+        }
+        else
+        {
+            letter = char.ToLower(input[0]); 
+            break; 
+            }
+        }
+
+        return letter; 
+    }
 
 
 public static void Main(string[] args)
 {
-        //grab word from the txt file
+
     int attempts = 0;
     string word = GetWord();
     string hidden = UnderScore(word);
     HashSet<char> guessedLetters = new HashSet<char>();
  
     Console.WriteLine(hidden);
-    Console.WriteLine(word);
     while (attempts != 7 && hidden.Contains('_') ){
-        Console.WriteLine("enter a letter");
-            string input = Console.ReadLine();
-            char letter = input[0];
-            string NewHidden = Check(letter,word,hidden);
-        char check = char.ToLower(input[0]);
-    if (ProcessGuess(check,guessedLetters)){      
+        char letter = GetValidatedInput();
+        string NewHidden = Check(letter,word,hidden);
+    if (ProcessGuess(letter,guessedLetters)){      
         if (NewHidden != hidden)
         {
             hidden = NewHidden;
@@ -149,7 +165,7 @@ public static void Main(string[] args)
         else 
         {
             attempts += 1;
-            Console.WriteLine("number of guesses left: " + (7 - attempts) );
+            Console.WriteLine("number of guesses left: " + (6 - attempts) );
             Console.WriteLine(DisplayHangman(attempts));
         }
     
@@ -157,8 +173,9 @@ public static void Main(string[] args)
     }
     }
 
-    if (attempts < 0   ){
+    if (attempts <= 0   ){
             Console.WriteLine("Oops you went over the limit buddyo");
+            Console.WriteLine("it was actually" + word);
     }
     else {
             Console.WriteLine("YIPEE");
@@ -176,23 +193,4 @@ public static void Main(string[] args)
       
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
