@@ -1,6 +1,8 @@
+// See https://aka.ms/new-console-template for more information
 using System;
 using System.IO;
 using System.Linq.Expressions;
+using System.Reflection.Metadata;
 
 public class Program{
     //set up phase
@@ -41,7 +43,34 @@ public static string Check(char guess, string word, string hidden ){
     }
     return new string(maskedArray);
 }
+public static string WhichTheme(string input)
+{
+    if (input == "Jobs" || input == "jobs"){ 
+        Random sigma = new Random();
+        int gigachad = sigma.Next(1,101);
+        string[] lines = File.ReadAllLines("Jobs.txt");
+        return lines[gigachad].ToLower();
+    }
+    else if (input == "Science" || input == "science"){
+        Random sigma = new Random();
+        int gigachad = sigma.Next(1,101);
+        string[] lines = File.ReadAllLines("Science.txt");
+        return lines[gigachad].ToLower();
+    }
+    else if (input == "Sports" || input == "sports"){
+        Random sigma = new Random();
+        int gigachad = sigma.Next(1,101);
+        string[] lines = File.ReadAllLines("Sports.txt");
+        return lines[gigachad].ToLower();
+    }
+    else{
+        return "idk";
+    }
 
+
+
+
+}
 static string DisplayHangman(int wrongGuesses)
     {//hangman art
         string[] hangmanStages = {
@@ -149,18 +178,32 @@ public static void Main(string[] args)
 {
 
     int attempts = 0;
-    string word = GetWord();
+    Console.WriteLine("pick a theme of Sports, Science or Jobs");
+    string theme = Console.ReadLine().ToLower();
+    
+    while (theme != "sports" && theme != "science" && theme != "jobs")
+    {
+        Console.WriteLine("Invalid theme. Please choose between Sports, Science, or Jobs.");
+        theme = Console.ReadLine(); // Prompt user to try again
+        }
+    string word = WhichTheme(theme);
     string hidden = UnderScore(word);
     HashSet<char> guessedLetters = new HashSet<char>();
- 
+    Console.Clear();
     Console.WriteLine(hidden);
-    while (attempts != 7 && hidden.Contains('_') ){
+
+    while (attempts != 6 && hidden.Contains('_') ){
+
         char letter = GetValidatedInput();
         string NewHidden = Check(letter,word,hidden);
+        Console.Clear();
     if (ProcessGuess(letter,guessedLetters)){      
         if (NewHidden != hidden)
         {
+            Console.WriteLine("number of guesses left: " + (6 - attempts) );
+            Console.WriteLine(DisplayHangman(attempts));
             hidden = NewHidden;
+            
         }
         else 
         {
@@ -173,7 +216,7 @@ public static void Main(string[] args)
     }
     }
 
-    if (attempts <= 0   ){
+    if (attempts >= 6){
             Console.WriteLine("Oops you went over the limit buddyo");
             Console.WriteLine("it was actually" + word);
     }
@@ -184,7 +227,9 @@ public static void Main(string[] args)
     string playAgain = Console.ReadLine().ToLower();
     if (playAgain == "y")
     {
+    
             Main(args);  // Restart the game
+
     }
     else
     {
