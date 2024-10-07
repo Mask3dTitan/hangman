@@ -1,0 +1,100 @@
+Engineer
+Doctor
+Nurse
+Teacher
+Lawyer
+Accountant
+Architect
+Mechanic
+Electrician
+Plumber
+Carpenter
+Chef
+Waiter
+Bartender
+Farmer
+Pilot
+Flight attendant
+Journalist
+Photographer
+Writer
+Editor
+Graphic designer
+Software developer
+Data analyst
+IT specialist
+Web developer
+Cybersecurity analyst
+Scientist
+Biologist
+Chemist
+Physicist
+Lab technician
+Pharmacist
+Veterinarian
+Psychologist
+Social worker
+Police officer
+Firefighter
+Paramedic
+Soldier
+Security guard
+Receptionist
+Administrative assistant
+Executive assistant
+Human resources manager
+Salesperson
+Marketing manager
+Public relations specialist
+Event planner
+Real estate agent
+Financial advisor
+Banker
+Loan officer
+Insurance agent
+Stockbroker
+Entrepreneur
+Business analyst
+Project manager
+Consultant
+CEO 
+Content creator
+Social media manager
+Influencer
+Actor
+Musician
+Director
+Producer
+Sound engineer
+Makeup artist
+Model
+Fashion designer
+Tailor
+Hairdresser
+Barber
+Fitness trainer
+Personal trainer
+Physical therapist
+Nutritionist
+Dietitian
+Dentist
+Dental hygienist
+Orthodontist
+Speech therapist
+Librarian
+Historian
+Museum curator
+Archeologist
+Tour guide
+Translator
+Interpreter
+Truck driver
+Delivery driver
+Uber driver
+Janitor
+Cleaner
+Landscaper
+window Cleaner
+app creator
+Janitor
+principal
